@@ -29,5 +29,11 @@ isMultipleOf x factors
 factorsOf :: Int -> [Int]
 factorsOf n = [x | x <- [1..n], n `rem` x == 0]
 
+largestPossibleProduct :: Int -> Int
+largestPossibleProduct n = ((10 ^ n) ^ 2-1)
+
 palindromicNumbersWithFactorsOfLength :: Int -> [Int]
-palindromicNumbersWithFactorsOfLength n = [x | x <- [1..((10 ^ n) ^ 2-1)], isPalindromicInt x && x `hasTwoFactorsOfLength` n]
+palindromicNumbersWithFactorsOfLength n = [x | x <- [largestPossibleProduct n,largestPossibleProduct n -1..1], isPalindromicInt x && x `hasTwoFactorsOfLength` n]
+
+largestPossiblePalindromicNumberWithFactorsOfLength :: Int -> Int
+largestPossiblePalindromicNumberWithFactorsOfLength n = head (palindromicNumbersWithFactorsOfLength n)
