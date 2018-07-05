@@ -1,3 +1,5 @@
+import System.Environment
+
 isPalindromicInt :: Int -> Bool
 isPalindromicInt n
     | length(show n) == 1 = True
@@ -40,3 +42,7 @@ palindromicNumbersWithFactorsOfLengthSmallFirst n = [x | x <- [1..largestPossibl
 
 largestPossiblePalindromicNumberWithFactorsOfLength :: Int -> Int
 largestPossiblePalindromicNumberWithFactorsOfLength n = head (palindromicNumbersWithFactorsOfLength n)
+
+main = do
+    args <- getArgs
+    print (largestPossiblePalindromicNumberWithFactorsOfLength (read (head args)))
