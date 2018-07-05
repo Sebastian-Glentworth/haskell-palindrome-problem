@@ -35,5 +35,8 @@ largestPossibleProduct n = ((10 ^ n) ^ 2-1)
 palindromicNumbersWithFactorsOfLength :: Int -> [Int]
 palindromicNumbersWithFactorsOfLength n = [x | x <- [largestPossibleProduct n,largestPossibleProduct n -1..1], isPalindromicInt x && x `hasTwoFactorsOfLength` n]
 
+palindromicNumbersWithFactorsOfLengthSmallFirst :: Int -> [Int]
+palindromicNumbersWithFactorsOfLengthSmallFirst n = [x | x <- [1..largestPossibleProduct n], isPalindromicInt x && x `hasTwoFactorsOfLength` n]
+
 largestPossiblePalindromicNumberWithFactorsOfLength :: Int -> Int
 largestPossiblePalindromicNumberWithFactorsOfLength n = head (palindromicNumbersWithFactorsOfLength n)
