@@ -8,10 +8,10 @@ isPalindromicInt n
 
 isPalindromicString :: String -> Bool
 isPalindromicString n
-    | n == [] = True
+    | null n = True
     | length n == 1 = True
     | head n /= last n = False
-    | isPalindromicString(tail(init n)) == True = True
+    | isPalindromicString(tail(init n)) = True
     | otherwise = False
 
 hasTwoFactorsOfLength :: Int -> Int -> Bool
@@ -22,7 +22,7 @@ hasTwoFactorsOfLength x n
 
 isMultipleOf :: Int -> [Int] -> Bool
 isMultipleOf x factors
-    | factors == [] = False
+    | null factors = False
     | head factors * last factors == x = True
     | x `isMultipleOf` init factors = True
     | x `isMultipleOf` tail factors = True
@@ -32,7 +32,7 @@ factorsOf :: Int -> [Int]
 factorsOf n = [x | x <- [1..n], n `rem` x == 0]
 
 largestPossibleProduct :: Int -> Int
-largestPossibleProduct n = ((10 ^ n) ^ 2-1)
+largestPossibleProduct n = (10 ^ n) ^ 2-1
 
 palindromicNumbersWithFactorsOfLength :: Int -> [Int]
 palindromicNumbersWithFactorsOfLength n = [x | x <- [largestPossibleProduct n,largestPossibleProduct n -1..1], isPalindromicInt x && x `hasTwoFactorsOfLength` n]
